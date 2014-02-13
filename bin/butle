@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+
+program
+  .version(require('../package.json').version)
+  .option('--port [int]', 'The port to serve on', 9090)
+  .parse(process.argv);
+
+require('../index.js')(program);
