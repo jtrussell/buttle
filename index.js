@@ -8,7 +8,7 @@ module.exports = function(opts) {
 
   var app = connect()
     .use(require('./lib/mid-logger')())
-    .use(require('./lib/mid-butle')(process.cwd()))
+    .use(require('./lib/mid-buttle')(process.cwd()))
     .use(connect.static(process.cwd()))
     .use(function(req, res){
       res.end('A thousand apologies, but there are none to be had.\n');

@@ -1,17 +1,17 @@
-# butle
+# buttle
 
 Simple static file (+ markdown) server.
 
 ## usage
 
 ```
-butle
+buttle
 ```
 
 ## super advanced usage
 
 ```
-butle --port [your favorite port]
+buttle --port [your favorite port]
 ```
 
 ## License

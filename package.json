@@ -1,18 +1,18 @@
 {
-  "name": "butle",
+  "name": "buttle",
   "version": "0.0.1",
   "description": "Serve static files from cwd",
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
-    "butle": "bin/butle"
+    "buttle": "bin/buttle"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jtrussell/butle.git"
+    "url": "https://github.com/jtrussell/buttle.git"
   },
   "keywords": [
     "server",
@@ -21,7 +21,7 @@
   "author": "jtrussell",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jtrussell/butle/issues"
+    "url": "https://github.com/jtrussell/buttle/issues"
   },
   "dependencies": {
     "marked": "~0.3.1",
