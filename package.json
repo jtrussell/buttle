@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Serve static files from cwd",
   "main": "index.js",
+  "preferGlobal": true,
   "bin": {
     "butle": "bin/butle"
   },
