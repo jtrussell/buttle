@@ -5,7 +5,7 @@ Simple static file (+ markdown) server.
 ## get it
 
 ```
-npm install -g butle
+npm install -g buttle
 ```
 
 ## usage
