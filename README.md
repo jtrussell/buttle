@@ -30,7 +30,7 @@ buttle --port [your favorite port]
 buttle --watch **/*.md
 ```
 
-Now you've got a live reload server watching all your makrdonw files.
+Now you've got a live reload server watching all your markdown files.
 
 
 ## License
