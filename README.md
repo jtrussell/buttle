@@ -37,8 +37,8 @@ Now you've got a live reload server watching all your markdown files.
 
 ### on the fly less conversion
 
-Requests `styles/main.css` will also find `styles/main.less` if the vanilla CSS
-file does not exist.
+Requests for `styles/main.css` will also find `styles/main.less` if the vanilla
+CSS file does not exist.
 
 
 ## License
