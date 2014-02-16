@@ -21,6 +21,7 @@ module.exports = function(opts) {
     .use(require('./lib/mid-lr')(opts.watch))
     .use(require('./lib/mid-buttle')(webroot))
     .use(connect.static(webroot))
+    .use(require('./lib/mid-less')())
     .use(function(req, res){
       res.end('A thousand apologies, but there are none to be had.\n');
     });

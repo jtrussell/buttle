@@ -1,6 +1,6 @@
 {
   "name": "buttle",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Serve static files from cwd",
   "main": "index.js",
   "preferGlobal": true,
@@ -30,6 +30,7 @@
     "chalk": "~0.4.0",
     "tiny-lr": "0.0.5",
     "gaze": "~0.5.0",
-    "connect-livereload": "~0.3.2"
+    "connect-livereload": "~0.3.2",
+    "less": "~1.6.3"
   }
 }
