@@ -20,6 +20,7 @@ module.exports = function(opts) {
     .use(require('./lib/mid-logger')())
     .use(require('./lib/mid-lr')(opts.watch))
     .use(require('./lib/mid-buttle')(webroot))
+    .use(require('./lib/mid-dir')(webroot,opts.nodir))
     .use(connect.static(webroot))
     .use(require('./lib/mid-less')())
     .use(function(req, res){

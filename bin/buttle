@@ -6,6 +6,7 @@ program
   .version(require('../package.json').version)
   .option('--port [int]', 'The port to serve on', 9090)
   .option('--watch [glob]', 'Watch these files (pattern) for changes')
+  .option('--nodir', 'Don\'t allow directory listings.')
   .parse(process.argv);
 
 require('../index.js')(program);

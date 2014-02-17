@@ -32,6 +32,10 @@ buttle --watch **/*.md
 
 Now you've got a live reload server watching all your markdown files.
 
+```
+buttle --nodir
+```
+Disable automatic directory listing.
 
 ## other fancy features
 
