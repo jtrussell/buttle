@@ -19,23 +19,24 @@ Now you're serving files from your current working directory.
 
 ## super advanced usage
 
+Use your favorite port:
+
 ```
 buttle --port [your favorite port]
 ```
 
+Disable automatic directory listing:
 
-## getting out of control
+```
+buttle --nodir
+```
+
+Live reload your html and markdown pages whenever watched files change:
 
 ```
 buttle --watch **/*.md
 ```
 
-Now you've got a live reload server watching all your markdown files.
-
-```
-buttle --nodir
-```
-Disable automatic directory listing.
 
 ## other fancy features
 
