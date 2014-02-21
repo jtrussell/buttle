@@ -51,9 +51,23 @@ buttle --open index.html
 Requests for `styles/main.css` will also find `styles/main.less` if the vanilla
 CSS file does not exist.
 
+### read .buttlerc for options
+
+It's can be a pain to specify the same config options over and over. Place a
+JSON file named `.buttlerc` in the directory your run `buttle` from:
+
+```javascript
+{
+  "port": 9000,
+  "open": "README.md",
+  "watch": "*.md"
+}
+```
+
 
 ## changelog
 
+- v0.0.6 Read .buttlerc for options if it exists
 - v0.0.5 Add support for opening files on server startup
 - v0.0.4 Add ability to list directory contents
 
