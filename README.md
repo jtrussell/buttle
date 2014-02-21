@@ -37,6 +37,12 @@ Live reload your html and markdown pages whenever watched files change:
 buttle --watch **/*.md
 ```
 
+Open files on server startup:
+
+```
+buttle --open index.html
+```
+
 
 ## other fancy features
 
@@ -46,6 +52,12 @@ Requests for `styles/main.css` will also find `styles/main.less` if the vanilla
 CSS file does not exist.
 
 
-## License
+## changelog
+
+- v0.0.5 Add support for opening files on server startup
+- v0.0.4 Add ability to list directory contents
+
+
+## license
 
 MIT

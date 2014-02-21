@@ -4,8 +4,9 @@ var program = require('commander');
 
 program
   .version(require('../package.json').version)
-  .option('--port [int]', 'The port to serve on', 9090)
-  .option('--watch [glob]', 'Watch these files (pattern) for changes')
+  .option('-p, --port [int]', 'The port to serve on', 9090)
+  .option('-w, --watch [glob]', 'Watch these files (pattern) for changes', null)
+  .option('-o, open [file|url]', 'Open the file or url on server startup', null)
   .option('--nodir', 'Don\'t allow directory listings.')
   .parse(process.argv);
 

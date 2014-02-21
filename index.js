@@ -27,8 +27,14 @@ module.exports = function(opts) {
       res.end('A thousand apologies, but there are none to be had.\n');
     });
 
-  console.log('Listening on port ' + port);
-  http.createServer(app).listen(port);
+  http.createServer(app).listen(port, function() {
+    console.log('Listening on port ' + port);
+    if(opts.open) {
+      require('open')(
+        require('url').resolve('http://localhost:' + port, opts.open)
+      );
+    }
+  });
 
   require('./lib/live-reload-server')(opts.watch);
 };
