@@ -1,13 +1,38 @@
 #!/usr/bin/env node
 
-var program = require('commander');
+var program = require('commander')
+  , rd = require('chalk').red
+  , yw = require('chalk').yellow
+  , gy = require('chalk').gray;
+
+var defaults = {
+  port: 9090,
+  watch: null,
+  open: null
+};
 
 program
   .version(require('../package.json').version)
-  .option('-p, --port [int]', 'The port to serve on', 9090)
-  .option('-w, --watch [glob]', 'Watch these files (pattern) for changes', null)
-  .option('-o, open [file|url]', 'Open the file or url on server startup', null)
+  .option('-p, --port [int]', 'The port to serve on', defaults.port)
+  .option('-w, --watch [glob]', 'Watch these files (pattern) for changes', defaults.watch)
+  .option('-o, open [file|url]', 'Open the file or url on server startup', defaults.open)
   .option('--nodir', 'Don\'t allow directory listings.')
   .parse(process.argv);
+
+var fs = require('fs');
+
+if(fs.existsSync('.buttlerc')) {
+  try {
+    var buttlerc = JSON.parse(fs.readFileSync('.buttlerc', {encoding: 'utf8'}));
+    Object.keys(buttlerc).forEach(function(key) {
+      if(!program.hasOwnProperty(key) || program[key] === defaults[key]) {
+        program[key] = buttlerc[key];
+      }
+    });
+  } catch(err) {
+    console.log(rd('BUTTLERC EXISTS BUT COULD NOT BE PARSED! ') + gy('(ignoring .buttlerc file)'));
+    console.log(yw(err.message));
+  }
+}
 
 require('../index.js')(program);
