@@ -43,6 +43,11 @@ Open files on server startup:
 buttle --open index.html
 ```
 
+Set automatic index file names:
+
+```
+buttle --index foo.html,bar.html
+```
 
 ## other fancy features
 
@@ -67,6 +72,7 @@ JSON file named `.buttlerc` in the directory your run `buttle` from:
 
 ## changelog
 
+- v0.0.7 Add "index" detection
 - v0.0.6 Read .buttlerc for options if it exists
 - v0.0.5 Add support for opening files on server startup
 - v0.0.4 Add ability to list directory contents

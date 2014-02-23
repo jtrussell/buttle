@@ -8,7 +8,12 @@ var program = require('commander')
 var defaults = {
   port: 9090,
   watch: null,
-  open: null
+  open: null,
+  index: [
+    'index.html',
+    'README.md', 'README.markdown',
+    'readme.md', 'readme.markdown'
+  ].join(','),
 };
 
 program
@@ -16,11 +21,12 @@ program
   .option('-p, --port [int]', 'The port to serve on', defaults.port)
   .option('-w, --watch [glob]', 'Watch these files (pattern) for changes', defaults.watch)
   .option('-o, open [file|url]', 'Open the file or url on server startup', defaults.open)
+  .option('-i, index [filenames]', 'Filenames for automatic index detection (comma delim)', defaults.index)
   .option('--nodir', 'Don\'t allow directory listings.')
   .parse(process.argv);
 
+// Read `.buttlerc`
 var fs = require('fs');
-
 if(fs.existsSync('.buttlerc')) {
   try {
     var buttlerc = JSON.parse(fs.readFileSync('.buttlerc', {encoding: 'utf8'}));
@@ -34,5 +40,8 @@ if(fs.existsSync('.buttlerc')) {
     console.log(yw(err.message));
   }
 }
+
+// Normalize params
+program.index = program.index.split(',');
 
 require('../index.js')(program);

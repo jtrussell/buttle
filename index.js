@@ -16,8 +16,8 @@ module.exports = function(opts) {
   ];
 
   var app = connect()
-    .use(require('./lib/mid-normalize')(indexes))
     .use(require('./lib/mid-logger')())
+    .use(require('./lib/mid-index')(webroot, opts.index))
     .use(require('./lib/mid-lr')(opts.watch))
     .use(require('./lib/mid-buttle')(webroot))
     .use(require('./lib/mid-dir')(webroot,opts.nodir))
