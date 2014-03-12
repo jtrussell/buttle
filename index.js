@@ -25,7 +25,8 @@ module.exports = function(opts) {
     .use(connect.static(webroot))
     .use(require('./lib/mid-less')(webroot))
     .use(function(req, res){
-      res.end('A thousand apologies, but there are none to be had.\n');
+      res.writeHead(404);
+      res.end('Where you goin? NOWHERE!');
     });
 
   http.createServer(app).listen(port, function() {
