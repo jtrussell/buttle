@@ -70,6 +70,11 @@ buttle --index foo.html,bar.html
 Requests for `styles/main.css` will also find `styles/main.less` if the vanilla
 CSS file does not exist.
 
+### basic `php` support
+
+Buttle will happily serve up your `.php` files, just make sure the `php`
+executable is in your path.
+
 ### read .buttlerc for options
 
 It's can be a pain to specify the same config options over and over. Place a
