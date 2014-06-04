@@ -9,6 +9,7 @@ var defaults = {
   port: 9090,
   watch: null,
   open: null,
+  php: 'php',
   index: [
     'index.html',
     'README.md', 'README.markdown',
@@ -22,6 +23,7 @@ program
   .option('-w, --watch [glob]', 'Watch these files (pattern) for changes', defaults.watch)
   .option('-o, open [file|url]', 'Open the file or url on server startup', defaults.open)
   .option('-i, index [filenames]', 'Filenames for automatic index detection (comma delim)', defaults.index)
+  .option('--php-bin [path]', 'Path to php binary, if not specified  buttle assumes `php` is in your path', defaults.phpBin)
   .option('--nodir', 'Don\'t allow directory listings.')
   .parse(process.argv);
 

@@ -72,8 +72,9 @@ CSS file does not exist.
 
 ### basic `php` support
 
-Buttle will happily serve up your `.php` files, just make sure the `php`
-executable is in your path.
+Buttle will happily serve up your `.php` files. Make sure `php` is in your path
+or provide a path to the php binary with the `--php-bin` flag on the command
+line or the `phpBin` property in your `.buttlerc` file.
 
 ### read .buttlerc for options
 
@@ -84,7 +85,8 @@ JSON file named `.buttlerc` in the directory your run `buttle` from:
 {
   "port": 9000,
   "open": "README.md",
-  "watch": "*.md"
+  "watch": "*.md",
+  "phpBin": "/path/to/php/executable"
 }
 ```
 

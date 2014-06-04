@@ -21,7 +21,7 @@ module.exports = function(opts) {
     .use(require('./lib/mid-lr')(opts.watch))
     .use(require('./lib/mid-buttle')(webroot))
     .use(require('./lib/mid-dir')(webroot,opts.nodir))
-    .use(require('./lib/mid-php')(webroot))
+    .use(require('./lib/mid-php')(webroot,opts.phpBin))
     .use(connect.static(webroot))
     .use(require('./lib/mid-less')(webroot))
     .use(function(req, res){
