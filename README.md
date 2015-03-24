@@ -45,10 +45,10 @@ Disable automatic directory listing:
 buttle --nodir
 ```
 
-Live reload your html and markdown pages whenever watched files change:
+Live reload your html and markdown pages whenever watched files change (HTML pages need at least a `<body>` or `<html>` tag):
 
 ```
-buttle --watch **/*.md
+buttle --watch '**/*.md'
 ```
 
 Open files on server startup:
