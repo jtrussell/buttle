@@ -9,6 +9,7 @@ var defaults = {
   port: 9090,
   watch: null,
   open: null,
+  maxAttemplts: 5,
   php: 'php',
   index: [
     'index.html',
@@ -24,6 +25,7 @@ program
   .option('-o, --open [file|url]', 'Open the file or url on server startup', defaults.open)
   .option('-i, --index [filenames]', 'Filenames for automatic index detection (comma delim)', defaults.index)
   .option('--php-bin [path]', 'Path to php binary, if not specified  buttle assumes `php` is in your path', defaults.phpBin)
+  .option('--max-attempts [attempts]', 'Number of ports to attempt if ports are busy', defaults.maxAttemplts)
   .option('--nodir', 'Don\'t allow directory listings.')
   .parse(process.argv);
 
