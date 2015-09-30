@@ -51,7 +51,7 @@ module.exports = function(opts) {
           });
         }, 250);
     }
-    else if (portAttempts == maxAttempts) {
+    else if (portAttempts >= maxAttempts) {
       console.log('Attempted to open ' + maxAttempts + ' ports but access was denied to all');
     }
   });
