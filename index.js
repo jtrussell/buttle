@@ -29,15 +29,50 @@ module.exports = function(opts) {
       res.end('Where you goin? NOWHERE!');
     });
 
-  http.createServer(app).listen(port, function() {
-    console.log('Listening on port ' + port);
-    if(opts.open) {
-      require('open')(
-        require('url').resolve('http://localhost:' + port, opts.open)
-      );
+  var server = http.createServer(app)
+    , maxAttempts = opts.maxAttempts || 5
+    , portAttempts = 0;
+
+  server.listen(port, function() {
+    openDoc(port, opts);
+  })
+  .on('error', function (err) {
+    portAttempts++;
+    console.log('Access to port '+ port + ' has been denied with error code: ' + err.code);
+
+    if ((err.code === 'EACCES') || (err.code === 'EADDRINUSE') && (portAttempts < maxAttempts)) {
+      port++;
+      
+      console.log('Attempting port ' + port + '. Attempt ' + portAttempts + ' out of ' + maxAttempts)
+      
+      setTimeout(function () {
+          server.listen(port, function() {
+            openDoc(port, opts);
+          });
+        }, 250);
+    }
+    else if (portAttempts == maxAttempts) {
+      console.log('Attempted to open ' + maxAttempts + ' ports but access was denied to all');
     }
   });
 
   require('./lib/live-reload-server')(opts.watch);
 };
+
+/**
+ * If an opening document has been specified, open it
+ *
+ * <description>
+ *
+ * @param {<type>} <name> <description>
+ * @return {<type>}
+ */
+var openDoc = function(port, opts) {
+  console.log('Listening on port ' + port);
+    if(opts.open) {
+      require('open')(
+        require('url').resolve('http://localhost:' + port, opts.open)
+      );
+    }
+}
 
