@@ -3,7 +3,7 @@
 module.exports = function(opts) {
   'use strict';
 
-  var port = opts.port || 8080
+  var port = opts.port
     , webroot = process.cwd();
 
   var connect = require('connect')
@@ -30,7 +30,7 @@ module.exports = function(opts) {
     });
 
   var server = http.createServer(app)
-    , maxAttempts = opts.maxAttempts || 5
+    , maxAttempts = opts.maxAttempts
     , portAttempts = 0;
 
   server.listen(port, function() {
