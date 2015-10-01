@@ -63,6 +63,12 @@ Set automatic index file names:
 buttle --index foo.html,bar.html
 ```
 
+Set the number of ports to attempt if your original or default port is busy:
+
+```
+buttle --max-attempts [number of attempts]
+```
+
 ## other fancy features
 
 ### on the fly less conversion
