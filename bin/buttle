@@ -25,7 +25,7 @@ program
   .option('-o, --open [file|url]', 'Open the file or url on server startup', defaults.open)
   .option('-i, --index [filenames]', 'Filenames for automatic index detection (comma delim)', defaults.index)
   .option('--php-bin [path]', 'Path to php binary, if not specified  buttle assumes `php` is in your path', defaults.phpBin)
-  .option('--max-attempts [attempts]', 'Number of ports to attempt if ports are busy', defaults.maxAttempts)
+  .option('--max-attempts [int]', 'Number of ports to attempt if the requested or default port is busy', defaults.maxAttempts)
   .option('--nodir', 'Don\'t allow directory listings.')
   .parse(process.argv);
 
