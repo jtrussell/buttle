@@ -34,43 +34,31 @@ module.exports = function(opts) {
     , portAttempts = 0;
 
   server.listen(port, function() {
-    openDoc(port, opts);
-  })
-  .on('error', function (err) {
-    portAttempts++;
-    console.log('Access to port '+ port + ' has been denied with error code: ' + err.code);
-
-    if ((err.code === 'EACCES') || (err.code === 'EADDRINUSE') && (portAttempts < maxAttempts)) {
-      port++;
-      
-      console.log('Attempting port ' + port + '. Attempt ' + portAttempts + ' out of ' + maxAttempts)
-      
-      server.listen(port, function() {
-        openDoc(port, opts);
-      });
-    }
-    else if (portAttempts >= maxAttempts) {
-      console.log('Attempted to open ' + maxAttempts + ' ports but access was denied to all');
-    }
-  });
-
-  require('./lib/live-reload-server')(opts.watch);
-};
-
-/**
- * If an opening document has been specified, open it
- *
- * <description>
- *
- * @param {<type>} <name> <description>
- * @return {<type>}
- */
-var openDoc = function(port, opts) {
-  console.log('Listening on port ' + port);
+    console.log('Listening on port ' + port);
+    
     if(opts.open) {
       require('open')(
         require('url').resolve('http://localhost:' + port, opts.open)
       );
     }
-}
 
+    require('./lib/live-reload-server')(opts.watch);
+  })
+  .on('error', function (err) {
+    portAttempts++;
+    console.log('Access to port '+ port + ' has been denied with error code: ' + err.code);
+
+    if (((err.code === 'EACCES') || (err.code === 'EADDRINUSE')) && (portAttempts <= maxAttempts)) {
+      // Port attempted is busy or blocked
+      port++;
+      console.log('Attempting port ' + port + '. Attempt ' + portAttempts + ' out of ' + maxAttempts)
+      server.listen(port);
+    } else if (portAttempts > maxAttempts) {
+      // Maximum nuber of attempts reached
+      console.log('Reached the maximum number of connection attempts.');
+    } else {
+      console.log('Failed to open port ' + port + '. Error code: ' + err.code);
+    }
+  });
+
+};
