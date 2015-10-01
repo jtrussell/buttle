@@ -45,11 +45,9 @@ module.exports = function(opts) {
       
       console.log('Attempting port ' + port + '. Attempt ' + portAttempts + ' out of ' + maxAttempts)
       
-      setTimeout(function () {
-          server.listen(port, function() {
-            openDoc(port, opts);
-          });
-        }, 250);
+      server.listen(port, function() {
+        openDoc(port, opts);
+      });
     }
     else if (portAttempts >= maxAttempts) {
       console.log('Attempted to open ' + maxAttempts + ' ports but access was denied to all');
