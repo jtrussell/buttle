@@ -1,6 +1,6 @@
 {
   "name": "buttle",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Serve static files from cwd",
   "main": "index.js",
   "preferGlobal": true,
