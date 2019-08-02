@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 
 var program = require('commander')
-  , rd = require('chalk').red
-  , yw = require('chalk').yellow
-  , gy = require('chalk').gray;
+
+var rd = require('chalk').red
+
+var yw = require('chalk').yellow
+
+var gy = require('chalk').gray
 
 var defaults = {
   port: 9090,
@@ -13,39 +16,68 @@ var defaults = {
   php: 'php',
   index: [
     'index.html',
-    'README.md', 'README.markdown',
-    'readme.md', 'readme.markdown'
-  ].join(','),
-};
+    'index.md',
+    'index.markdown',
+    'README.md',
+    'README.markdown',
+    'readme.md',
+    'readme.markdown'
+  ].join(',')
+}
 
 program
   .version(require('../package.json').version)
   .option('-p, --port [int]', 'The port to serve on', defaults.port)
-  .option('-w, --watch [glob]', 'Watch these files (pattern) for changes', defaults.watch)
-  .option('-o, --open [file|url]', 'Open the file or url on server startup', defaults.open)
-  .option('-i, --index [filenames]', 'Filenames for automatic index detection (comma delim)', defaults.index)
-  .option('--php-bin [path]', 'Path to php binary, if not specified  buttle assumes `php` is in your path', defaults.phpBin)
-  .option('--max-attempts [int]', 'Number of ports to attempt if the requested or default port is busy', defaults.maxAttempts)
-  .option('--nodir', 'Don\'t allow directory listings.')
-  .parse(process.argv);
+  .option(
+    '-w, --watch [glob]',
+    'Watch these files (pattern) for changes',
+    defaults.watch
+  )
+  .option(
+    '-o, --open [file|url]',
+    'Open the file or url on server startup',
+    defaults.open
+  )
+  .option(
+    '-i, --index [filenames]',
+    'Filenames for automatic index detection (comma delim)',
+    defaults.index
+  )
+  .option(
+    '--php-bin [path]',
+    'Path to php binary, if not specified  buttle assumes `php` is in your path',
+    defaults.phpBin
+  )
+  .option(
+    '--max-attempts [int]',
+    'Number of ports to attempt if the requested or default port is busy',
+    defaults.maxAttempts
+  )
+  .option('--nodir', "Don't allow directory listings.")
+  .parse(process.argv)
 
 // Read `.buttlerc`
-var fs = require('fs');
-if(fs.existsSync('.buttlerc')) {
+var fs = require('fs')
+if (fs.existsSync('.buttlerc')) {
   try {
-    var buttlerc = JSON.parse(fs.readFileSync('.buttlerc', {encoding: 'utf8'}));
-    Object.keys(buttlerc).forEach(function(key) {
-      if(!program.hasOwnProperty(key) || program[key] === defaults[key]) {
-        program[key] = buttlerc[key];
+    var buttlerc = JSON.parse(
+      fs.readFileSync('.buttlerc', { encoding: 'utf8' })
+    )
+    Object.keys(buttlerc).forEach(function (key) {
+      if (!program.hasOwnProperty(key) || program[key] === defaults[key]) {
+        program[key] = buttlerc[key]
       }
-    });
-  } catch(err) {
-    console.log(rd('BUTTLERC EXISTS BUT COULD NOT BE PARSED! ') + gy('(ignoring .buttlerc file)'));
-    console.log(yw(err.message));
+    })
+  } catch (err) {
+    console.log(
+      rd('BUTTLERC EXISTS BUT COULD NOT BE PARSED! ') +
+        gy('(ignoring .buttlerc file)')
+    )
+    console.log(yw(err.message))
   }
 }
 
 // Normalize params
-program.index = program.index.split(',');
+program.index = program.index.split(',')
 
-require('../index.js')(program);
+require('../index.js')(program)
