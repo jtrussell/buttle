@@ -12,7 +12,9 @@ module.exports = function(opts) {
   var indexes = [
     /index\.html/i,
     /readme\.md/i,
-    /readme\.markdown/i
+    /index\.md/i,
+    /readme\.markdown/i,
+    /index\.markdown/i
   ];
 
   var app = connect()
@@ -35,7 +37,7 @@ module.exports = function(opts) {
 
   server.listen(port, function() {
     console.log('Listening on port ' + port);
-    
+
     if(opts.open) {
       require('open')(
         require('url').resolve('http://localhost:' + port, opts.open)
