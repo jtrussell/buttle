@@ -24,16 +24,16 @@
     "url": "https://github.com/jtrussell/buttle/issues"
   },
   "dependencies": {
-    "connect": "~2.12.0",
-    "commander": "~2.1.0",
     "chalk": "~0.4.0",
-    "tiny-lr": "0.1.5",
-    "gaze": "~0.5.1",
+    "commander": "~2.1.0",
+    "connect": "~2.12.0",
     "connect-livereload": "^0.5.3",
+    "gaze": "~0.5.1",
+    "kramed": "^0.5.0",
     "less": "~1.6.3",
-    "open": "0.0.4",
     "lodash.debounce": "^2.4.1",
     "lodash.uniq": "^2.4.1",
-    "kramed": "^0.5.0"
+    "open": "^6.4.0",
+    "tiny-lr": "0.1.5"
   }
 }
