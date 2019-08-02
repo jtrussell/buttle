@@ -7,6 +7,7 @@ module.exports = function(opts) {
     , webroot = process.cwd();
 
   var connect = require('connect')
+    , serveStatic = require('serve-static')
     , http = require('http');
 
   var indexes = [
@@ -24,7 +25,7 @@ module.exports = function(opts) {
     .use(require('./lib/mid-buttle')(webroot))
     .use(require('./lib/mid-dir')(webroot,opts.nodir))
     .use(require('./lib/mid-php')(webroot,opts.phpBin))
-    .use(connect.static(webroot))
+    .use(serveStatic(webroot))
     .use(require('./lib/mid-less')(webroot))
     .use(function(req, res){
       res.writeHead(404);
